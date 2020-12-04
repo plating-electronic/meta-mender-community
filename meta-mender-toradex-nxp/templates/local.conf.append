@@ -1,7 +1,11 @@
 
 # Appended fragment from meta-mender-community/meta-mender-toradex-nxp/templates
 
-MACHINE = "verdin-imx8mm"
+# Supported machines are:
+#   - verdin-imx8mm
+#   - colibri-imx6ull
+
+MACHINE ?= "verdin-imx8mm"
 
 # Comment/remove below to enable GRUB integration instead of U-Boot
 MENDER_FEATURES_ENABLE_append = " mender-uboot mender-image-sd"
@@ -24,3 +28,14 @@ IMAGE_BOOT_FILES_remove_mender-grub = "boot.scr-verdin-imx8mm;boot.scr"
 
 # No SPL, otherwise this gets included in tezi image
 OFFSET_SPL_PAYLOAD_verdin-imx8mm = ""
+
+# Specific Configuration for Colibri i.MX6ULL
+IMAGE_CLASSES_remove_colibri-imx6ull = " mender-part-images"
+IMAGE_FSTYPES_remove_colibri-imx6ull = " mtdimg"
+MENDER_IMAGE_BOOTLOADER_FILE_colibri-imx6ull = "u-boot-nand.imx"
+MENDER_STORAGE_PEB_SIZE_colibri-imx6ull = "131072"
+MENDER_STORAGE_TOTAL_SIZE_MB_colibri-imx6ull = "512"
+IMAGE_ROOTFS_MAXSIZE_colibri-imx6ull = "307200"
+
+# Enable free --space-fixup (-F)
+MKUBIFS_ARGS_colibri-imx6ull = "-m ${MENDER_FLASH_MINIMUM_IO_UNIT} -e ${MENDER_UBI_LEB_SIZE} -c ${MENDER_MAXIMUM_LEB_COUNT} --space-fixup"
