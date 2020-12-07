@@ -30,6 +30,8 @@ IMAGE_BOOT_FILES_remove_mender-grub = "boot.scr-verdin-imx8mm;boot.scr"
 OFFSET_SPL_PAYLOAD_verdin-imx8mm = ""
 
 # Specific Configuration for Colibri i.MX6ULL
+MENDER_MTDIDS = "nand0=gpmi-nand"
+MENDER_MTDPARTS = "gpmi-nand:512k(mx6ull-bcb),1536k(u-boot1)ro,1536k(u-boot2)ro,512k(u-boot-env),-(ubi)"
 IMAGE_CLASSES_remove_colibri-imx6ull = " mender-part-images"
 IMAGE_FSTYPES_remove_colibri-imx6ull = " mtdimg"
 MENDER_IMAGE_BOOTLOADER_FILE_colibri-imx6ull = "u-boot-nand.imx"
