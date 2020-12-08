@@ -38,7 +38,6 @@ IMAGE_FSTYPES_remove_colibri-imx6ull = " mtdimg"
 MENDER_IMAGE_BOOTLOADER_FILE_colibri-imx6ull = "u-boot-nand.imx"
 MENDER_STORAGE_PEB_SIZE_colibri-imx6ull = "131072"
 MENDER_STORAGE_TOTAL_SIZE_MB_colibri-imx6ull = "512"
-IMAGE_ROOTFS_MAXSIZE_colibri-imx6ull = "307200"
 
 # Enable free --space-fixup (-F)
 MKUBIFS_ARGS_colibri-imx6ull = "-m ${MENDER_FLASH_MINIMUM_IO_UNIT} -e ${MENDER_UBI_LEB_SIZE} -c ${MENDER_MAXIMUM_LEB_COUNT} --space-fixup"
